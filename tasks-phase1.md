@@ -5,13 +5,17 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
 1. Authors:
 
-   ***enter your group nr***
-
-   ***link to forked repo***
+   **Grupa nr 7**
    
-2. Fork https://github.com/bdg-tbd/tbd-2023z-phase1 and follow all steps in README.md.
+   * Wojciech Gierulski
+   * Karol Kociołek
+   * Jakub Płudowski
 
-3. Select your project and set budget alerts on 5%, 25%, 50%, 80% of 50$ (in cloud console -> billing -> budget & alerts -> create buget; unclick discounts and promotions&others while creating budget).
+   **[link to forked repo](https://github.com/WojciechGierulski/tbd-2023z-phase1)**
+   
+3. Fork https://github.com/bdg-tbd/tbd-2023z-phase1 and follow all steps in README.md.
+
+4. Select your project and set budget alerts on 5%, 25%, 50%, 80% of 50$ (in cloud console -> billing -> budget & alerts -> create buget; unclick discounts and promotions&others while creating budget).
 
   ![img.png](doc/figures/discounts.png)
 
