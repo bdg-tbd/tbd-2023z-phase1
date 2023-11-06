@@ -51,7 +51,7 @@ resource "google_storage_bucket" "tbd-data-bucket" {
   uniform_bucket_level_access = false #tfsec:ignore:google-storage-enable-ubla
   public_access_prevention    = "enforced"
   force_destroy               = true
-  versioning = {
+  versioning {
     enabled = true
   }
 }
