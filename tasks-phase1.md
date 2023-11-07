@@ -87,8 +87,115 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 9. Add costs by entering the expected consumption into Infracost
 
    ***place the expected consumption you entered here***
+   [expected consumption file](./infracost-usage.yml)
+   ```yaml
+    version: 0.1
+    resource_type_default_usage:
+    #
+    # The following usage values apply to each resource of the given type, which is useful when you want to define defaults.
+    # All values are commented-out, you can uncomment resource types and customize as needed.
+    #
+    google_compute_router_nat:
+        assigned_vms: 1 # Number of VM instances assigned to the NAT gateway
+        monthly_data_processed_gb: 3.0 # Monthly data processed (ingress and egress) by the NAT gateway in GB
+    google_container_registry:
+        storage_gb: 10 # Total size of bucket in GB.
+        monthly_class_a_operations: 10 # Monthly number of class A operations (object adds, bucket/object list).
+        monthly_class_b_operations: 100 # Monthly number of class B operations (object gets, retrieve bucket/object metadata).
+        monthly_data_retrieval_gb: 20.0 # Monthly amount of data retrieved in GB.
+        monthly_egress_data_transfer_gb:
+        same_continent: 20.0 # Same continent.
+        worldwide: 0.0 # Worldwide excluding Asia, Australia.
+        asia: 0.0 # Asia excluding China, but including Hong Kong.
+        china: 0.0 # China excluding Hong Kong.
+        australia: 0.0 # Australia.
+    google_storage_bucket:
+        storage_gb: 5.0 # Total size of bucket in GB.
+        monthly_class_a_operations: 100 # Monthly number of class A operations (object adds, bucket/object list).
+        monthly_class_b_operations: 1000 # Monthly number of class B operations (object gets, retrieve bucket/object metadata).
+        monthly_data_retrieval_gb: 20.0 # Monthly amount of data retrieved in GB.
+        monthly_egress_data_transfer_gb:
+        same_continent: 20.0 # Same continent.
+        worldwide: 0.0 # Worldwide excluding Asia, Australia.
+        asia: 0.0 # Asia excluding China, but including Hong Kong.
+        china: 0.0 # China excluding Hong Kong.
+        australia: 0.0 # Australia.
+   ```
 
    ***place the screenshot from infracost output here***
+   ```
+    infracost breakdown --path . --usage-file infracost-usage.yml
+    Evaluating Terraform directory at .
+    ✔ Downloading Terraform modules
+    ✔ Evaluating Terraform directory 
+    Warning: Input values were not provided for following Terraform variables: "variable.project_name", "variable.ai_notebook_instance_owner". Use --terraform-var-file or --terraform-var to specify them.
+    ✔ Retrieving cloud prices to calculate costs 
+
+    Project: WojciechGierulski/tbd-2023z-phase1
+
+    Name                                                                                Monthly Qty  Unit             Monthly Cost 
+                                                                                                                                    
+    module.data-pipelines.google_storage_bucket.tbd-code-bucket                                                                    
+    ├─ Storage (standard)                                                                         5  GiB                     $0.10 
+    ├─ Object adds, bucket/object list (class A)                                               0.01  10k operations          $0.00 
+    ├─ Object gets, retrieve bucket/object metadata (class B)                                   0.1  10k operations          $0.00 
+    └─ Network egress                                                                                                              
+        ├─ Data transfer in same continent                                                        20  GB                      $0.40 
+        ├─ Data transfer to worldwide excluding Asia, Australia (first 1TB)            Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to Asia excluding China, but including Hong Kong (first 1TB)  Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to China excluding Hong Kong (first 1TB)                      Monthly cost depends on usage: $0.23 per GB  
+        └─ Data transfer to Australia (first 1TB)                                      Monthly cost depends on usage: $0.19 per GB  
+                                                                                                                                    
+    module.data-pipelines.google_storage_bucket.tbd-data-bucket                                                                    
+    ├─ Storage (standard)                                                                         5  GiB                     $0.10 
+    ├─ Object adds, bucket/object list (class A)                                               0.01  10k operations          $0.00 
+    ├─ Object gets, retrieve bucket/object metadata (class B)                                   0.1  10k operations          $0.00 
+    └─ Network egress                                                                                                              
+        ├─ Data transfer in same continent                                                        20  GB                      $0.40 
+        ├─ Data transfer to worldwide excluding Asia, Australia (first 1TB)            Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to Asia excluding China, but including Hong Kong (first 1TB)  Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to China excluding Hong Kong (first 1TB)                      Monthly cost depends on usage: $0.23 per GB  
+        └─ Data transfer to Australia (first 1TB)                                      Monthly cost depends on usage: $0.19 per GB  
+                                                                                                                                    
+    module.gcr.google_container_registry.registry                                                                                  
+    ├─ Storage (standard)                                                                        10  GiB                     $0.26 
+    ├─ Object adds, bucket/object list (class A)                                              0.001  10k operations          $0.00 
+    ├─ Object gets, retrieve bucket/object metadata (class B)                                  0.01  10k operations          $0.00 
+    └─ Network egress                                                                                                              
+        ├─ Data transfer in same continent                                                        20  GB                      $0.40 
+        ├─ Data transfer to worldwide excluding Asia, Australia (first 1TB)            Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to Asia excluding China, but including Hong Kong (first 1TB)  Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to China excluding Hong Kong (first 1TB)                      Monthly cost depends on usage: $0.23 per GB  
+        └─ Data transfer to Australia (first 1TB)                                      Monthly cost depends on usage: $0.19 per GB  
+                                                                                                                                    
+    module.vertex_ai_workbench.google_storage_bucket.notebook-conf-bucket                                                          
+    ├─ Storage (standard)                                                                         5  GiB                     $0.10 
+    ├─ Object adds, bucket/object list (class A)                                               0.01  10k operations          $0.00 
+    ├─ Object gets, retrieve bucket/object metadata (class B)                                   0.1  10k operations          $0.00 
+    └─ Network egress                                                                                                              
+        ├─ Data transfer in same continent                                                        20  GB                      $0.40 
+        ├─ Data transfer to worldwide excluding Asia, Australia (first 1TB)            Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to Asia excluding China, but including Hong Kong (first 1TB)  Monthly cost depends on usage: $0.12 per GB  
+        ├─ Data transfer to China excluding Hong Kong (first 1TB)                      Monthly cost depends on usage: $0.23 per GB  
+        └─ Data transfer to Australia (first 1TB)                                      Monthly cost depends on usage: $0.19 per GB  
+                                                                                                                                    
+    module.vpc.module.cloud-router.google_compute_router_nat.nats["nat-gateway"]                                                   
+    ├─ Assigned VMs (first 32)                                                                  730  VM-hours                $1.02 
+    └─ Data processed                                                                             3  GB                      $0.14 
+                                                                                                                                    
+    OVERALL TOTAL                                                                                                            $3.32 
+    ──────────────────────────────────
+    31 cloud resources were detected:
+    ∙ 5 were estimated, all of which include usage-based costs, see https://infracost.io/usage-file
+    ∙ 23 were free, rerun with --show-skipped to see details
+    ∙ 3 are not supported yet, rerun with --show-skipped to see details
+
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+    ┃ Project                                            ┃ Monthly cost ┃
+    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
+    ┃ WojciechGierulski/tbd-2023z-phase1                 ┃ $3           ┃
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
+   ```
 
 10. Some resources are not supported by infracost yet. Estimate manually total costs of infrastructure based on pricing costs for region used in the project. Include costs of cloud composer, dataproc and AI vertex workbanch and them to infracost estimation.
 
