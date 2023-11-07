@@ -17,9 +17,11 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
 4. Select your project and set budget alerts on 5%, 25%, 50%, 80% of 50$ (in cloud console -> billing -> budget & alerts -> create buget; unclick discounts and promotions&others while creating budget).
 
-  ![img.png](doc/figures/discounts.png)
+  ![img.png](doc/figures/budget.png)
 
 4. From avaialble Github Actions select and run destroy on main branch.
+
+![img.png](doc/figures/destroy-main.png)
 
 5. Create new git branch and add two resources in ```/modules/data-pipeline/main.tf```:
     1. resource "google_storage_bucket" "tbd-data-bucket" -> the bucket to store data. Set the following properties:
@@ -37,6 +39,28 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
         * member = "serviceAccount:${var.data_service_account}"
 
     ***insert the link to the modified file and terraform snippet here***
+    
+    [link to modified file](modules/data-pipeline/main.tf)
+    ```terraform
+    resource "google_storage_bucket" "tbd-data-bucket" {
+    project                     = var.project_name
+    name                        = var.data_bucket_name
+    location                    = var.region
+    uniform_bucket_level_access = false #tfsec:ignore:google-storage-enable-ubla
+    public_access_prevention    = "enforced"
+    force_destroy               = true
+    versioning {
+        enabled = true
+        }
+    }
+
+
+    resource "google_storage_bucket_iam_member" "tbd-data-bucket-iam-editor" {
+    bucket = google_storage_bucket.tbd-data-bucket.name
+    role   = "roles/storage.objectUser"
+    member = "serviceAccount:${var.data_service_account}"
+    }
+    ```
 
     Create PR from this branch to **YOUR** master and merge it to make new release. 
     
