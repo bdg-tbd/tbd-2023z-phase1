@@ -65,7 +65,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     Create PR from this branch to **YOUR** master and merge it to make new release. 
     
     ***place the screenshot from GA after succesfull application of release with this changes***
-
+    ![img.png](doc/figures/build.png)
     
 
 6. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
