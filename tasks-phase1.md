@@ -75,6 +75,9 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 7. Reach YARN UI
    
    ***place the port and the screenshot of YARN UI here***
+
+    **port: 8088**
+   ![img.png](doc/figures/yarn.png)
    
 8. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
