@@ -71,6 +71,31 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 6. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 
     ***describe one selected module and put the output of terraform graph for this module here***
+
+    Module: **data-pipeline**
+
+    Overall, this module establishes buckets, permissions for their usage, and manages data within these buckets.
+
+    Description of components in mian.tf:
+
+    1. **locals**
+        Local variables for configuring resources.
+
+    2. **job-code, dag-code**
+        Definition of Python files containing job code (spark-job.py) and DAG code (dag-code.py).
+
+    3. **tbd-code-bucket, tbd-data-bucket**
+        Definition of GCP Buckets:
+        
+        * tdb-code-bucket: Bucket designated for storing code related to Spark jobs (spark-job.py).
+        * tbd-data-bucket: Bucket designated for storing Apache Airflow data.
+
+    4. **tbd-code-bucket-iam-viewer, tbd-data-bucket-iam-editor**
+        The data service account is granted storage object user and viewer permissions on buckets defined within this module.
+    
+
+    `terraform graph | dot -Tsvg > graph.svg`
+    ![img.png](doc/figures/graph.svg)
    
 7. Reach YARN UI
    
