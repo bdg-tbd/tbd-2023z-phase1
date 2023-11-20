@@ -1,0 +1,21 @@
+name,quantity,region,service_id,sku,product_description,"unit_price, USD","total_price, USD",notes
+Cloud Composer,1,europe-west1,1992-3666-B975,Look up for SKU https://cloud.google.com/skus/?currency=USD&filter=1992-3666-B975,CP-COMPOSER,93.31714285714284,93.31714285714284,
+E2 Instance Core running in EMEA,347.6190476190476,europe-west1,6F81-5844-456A,9FE0-8F60-A9F0,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.02399337,8.340552428571428,1 x VertexAI Workbench
+E2 Instance Ram running in EMEA,1390.4761904761904,europe-west1,6F81-5844-456A,F268-6CE7-AC16,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.00321609,4.471896571428571,1 x VertexAI Workbench
+Licensing Fee for Google Cloud Dataproc (CPU cost),960,global,6F81-5844-456A,DC33-D3C7-25CA,CP-DATAPROC,0.01,9.6,
+E2 Instance Core running in EMEA,320,europe-west1,6F81-5844-456A,9FE0-8F60-A9F0,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.02399337,7.6778784,1 x Dataproc master node
+E2 Instance Ram running in EMEA,1280,europe-west1,6F81-5844-456A,F268-6CE7-AC16,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.00321609,4.1165952,1 x Dataproc master node
+E2 Instance Core running in EMEA,640,europe-west1,6F81-5844-456A,9FE0-8F60-A9F0,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.02399337,15.3557568,2 x Dataproc worker nodes
+E2 Instance Ram running in EMEA,2560,europe-west1,6F81-5844-456A,F268-6CE7-AC16,CP-COMPUTEENGINE-VMIMAGE-E2-STANDARD-2,0.00321609,8.2331904,2 x Dataproc worker nodes
+Balanced PD Capacity,100,europe-west1,6F81-5844-456A,6AE1-525F-8B80,CP-COMPUTEENGINE-STORAGE-PD-READONLY,0.1,10
+Storage PD Capacity,30,europe-west1,6F81-5844-456A,D973-5D65-BAB2,CP-COMPUTEENGINE-STORAGE-PD-READONLY,0,0
+Storage PD Capacity,35.753424657534254,europe-west1,6F81-5844-456A,D973-5D65-BAB2,CP-COMPUTEENGINE-STORAGE-PD-READONLY,0.04,1.4301369863013702
+,,,,,,,,
+,,,,,,Total Price:,162.54314964344422,
+,,,,,,* Sustained use discount (SUD) is not included. You may need to apply discounts separately for each SKU,,
+,,,,,,,,
+"Prices are in US dollars, effective date is 2023-11-20T21:51:36.350Z.",,,,,,,,
+,,,,,,,,
+The estimated fees provided by Google Cloud Pricing Calculator are for discussion purposes only and are not binding on either you or Google. Your actual fees may be higher or lower than the estimate.,,,,,,,,
+,,,,,,,,
+Url to the estimate:,https://cloud.google.com/products/calculator/#id=98119aa4-1e79-4bd7-ad87-27d9123a4b90,,,,,,,

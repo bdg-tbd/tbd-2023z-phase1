@@ -229,7 +229,21 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
     ***place your estimation and references here***
 
+    References:
+    * [Pricing Calculator Estimate](https://cloud.google.com/products/calculator/#id=33b2d2bf-964e-4cec-94ae-ebbe429cfe47)
+    * [Cloud Composer Pricing](https://cloud.google.com/composer/pricing)
+    * [VertexAI Pricing](https://cloud.google.com/vertex-ai/pricing#instances)
+    * [Dataproc pricing](https://cloud.google.com/dataproc/pricing)
+
+    ![img.png](doc/figures/estimate.png)
+
     ***what are the options for cost optimization?***
+
+    1. Using spot worker nodes in dataproc instead of normal workers if workloads are fault-tolerant.
+    2. Reducing compute power of compute engines if possible.
+    3. Destroy resources when not in use.
+    4. Move resources to region where compute power and storage is cheaper (ex. us-central1).
+
     
 12. Create a BigQuery dataset and an external table
     
