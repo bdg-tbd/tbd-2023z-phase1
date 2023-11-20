@@ -112,6 +112,10 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
   
     ***place your diagram here***
 
+    ![img.png](doc/drawio/architecture.drawio.png)
+
+    It is necessary to specify the host for the driver because worker nodes need to know where to listen for incoming tasks.
+
 9. Add costs by entering the expected consumption into Infracost
 
    ***place the expected consumption you entered here***
