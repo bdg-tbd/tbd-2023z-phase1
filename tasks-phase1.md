@@ -65,16 +65,44 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     Create PR from this branch to **YOUR** master and merge it to make new release. 
     
     ***place the screenshot from GA after succesfull application of release with this changes***
-
+    ![img.png](doc/figures/build.png)
     
 
 6. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 
     ***describe one selected module and put the output of terraform graph for this module here***
+
+    Module: **data-pipeline**
+
+    Overall, this module establishes buckets, permissions for their usage, and manages data within these buckets.
+
+    Description of components in mian.tf:
+
+    1. **locals**
+        Local variables for configuring resources.
+
+    2. **job-code, dag-code**
+        Definition of Python files containing job code (spark-job.py) and DAG code (dag-code.py).
+
+    3. **tbd-code-bucket, tbd-data-bucket**
+        Definition of GCP Buckets:
+        
+        * tdb-code-bucket: Bucket designated for storing code related to Spark jobs (spark-job.py).
+        * tbd-data-bucket: Bucket designated for storing Apache Airflow data.
+
+    4. **tbd-code-bucket-iam-viewer, tbd-data-bucket-iam-editor**
+        The data service account is granted storage object user and viewer permissions on buckets defined within this module.
+    
+
+    `terraform graph | dot -Tsvg > graph.svg`
+    ![img.png](doc/figures/graph.svg)
    
 7. Reach YARN UI
    
    ***place the port and the screenshot of YARN UI here***
+
+    **port: 8088**
+   ![img.png](doc/figures/yarn.png)
    
 8. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
@@ -83,6 +111,10 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     4. Description of network communication (ports, why it is necessary to specify the host for the driver) of Apache Spark running from Vertex AI Workbech
   
     ***place your diagram here***
+
+    ![img.png](doc/drawio/architecture.drawio.png)
+
+    It is necessary to specify the host for the driver because worker nodes need to know where to listen for incoming tasks.
 
 9. Add costs by entering the expected consumption into Infracost
 
@@ -201,7 +233,21 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
     ***place your estimation and references here***
 
+    References:
+    * [Pricing Calculator Estimate](https://cloud.google.com/products/calculator/#id=33b2d2bf-964e-4cec-94ae-ebbe429cfe47)
+    * [Cloud Composer Pricing](https://cloud.google.com/composer/pricing)
+    * [VertexAI Pricing](https://cloud.google.com/vertex-ai/pricing#instances)
+    * [Dataproc pricing](https://cloud.google.com/dataproc/pricing)
+
+    ![img.png](doc/figures/estimate.png)
+
     ***what are the options for cost optimization?***
+
+    1. Using spot worker nodes in dataproc instead of normal workers if workloads are fault-tolerant.
+    2. Reducing compute power of compute engines if possible.
+    3. Destroy resources when not in use.
+    4. Move resources to region where compute power and storage is cheaper (ex. us-central1).
+
     
 12. Create a BigQuery dataset and an external table
     

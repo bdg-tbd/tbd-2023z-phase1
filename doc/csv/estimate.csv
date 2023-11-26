@@ -1,0 +1,21 @@
+name;quantity;region;unit_price, USD;total_price, USD;notes
+Cloud Composer;1;europe-west1;93,3171;93,32;
+E2 Instance Core running in EMEA;347,62;europe-west1;0,0240;8,34;1 x VertexAI Workbench
+E2 Instance Ram running in EMEA;1390,48;europe-west1;0,0032;4,47;1 x VertexAI Workbench
+Licensing Fee for Google Cloud Dataproc (CPU cost);960;global;0,0100;9,60;
+E2 Instance Core running in EMEA;320;europe-west1;0,0240;7,68;1 x Dataproc master node
+E2 Instance Ram running in EMEA;1280;europe-west1;0,0032;4,12;1 x Dataproc master node
+E2 Instance Core running in EMEA;640;europe-west1;0,0240;15,36;2 x Dataproc worker nodes
+E2 Instance Ram running in EMEA;2560;europe-west1;0,0032;8,23;2 x Dataproc worker nodes
+Balanced PD Capacity;100;europe-west1;0,1000;10;
+Storage PD Capacity;30;europe-west1;0;0;
+Storage PD Capacity;35,75;europe-west1;0,0400;1,43;
+;;;;;
+;;;Total Price:;162,54;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+;;;;;
+Url to the estimate:;https://cloud.google.com/products/calculator/#id=98119aa4-1e79-4bd7-ad87-27d9123a4b90;;;;
