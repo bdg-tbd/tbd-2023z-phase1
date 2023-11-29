@@ -9,7 +9,7 @@ resource "google_project" "tbd_project" {
   ## change it to break the checkov during the labs
   auto_create_network = false
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -78,7 +78,7 @@ resource "google_storage_bucket" "tbd-state-bucket" {
   uniform_bucket_level_access = false #tfsec:ignore:google-storage-enable-ubla
   force_destroy               = true
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   #checkov:skip=CKV_GCP_62: "Bucket should log access"
