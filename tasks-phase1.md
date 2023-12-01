@@ -288,7 +288,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     ![img.png](doc/figures/zad13.png)
 
     The problem was that the value of DATA_BUCKET variable was wrong. After we changed it into "gs://tbd-2023z-303748-data/data/shakespeare/" it started to work normally.
-    
+
     ***describe the cause and how to find the error***
 
 14. Additional tasks using Terraform:
@@ -296,8 +296,9 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
     ***place the link to the modified file and inserted terraform code***
+    In main.tf file the code was changed. For vertex ai and dataproc the machine type was changed.
     
-    3. Add support for preemptible/spot instances in a Dataproc cluster
+    2. Add support for preemptible/spot instances in a Dataproc cluster
 
     ***place the link to the modified file and inserted terraform code***
     
