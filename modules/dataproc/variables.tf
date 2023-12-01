@@ -24,3 +24,9 @@ variable "image_version" {
   type    = string
   default = "2.1.27-ubuntu20"
 }
+
+variable "preemptible_num_instances" {
+  type = number
+  default     = 0
+  description = "The number of preemptible/spot instances"
+}
